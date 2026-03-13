@@ -34,36 +34,30 @@ import yuri.garcia.entrenamientopokemon_252583_252801_253080.data.models.Pokemon
         )
     )
 
-    // ? Significa que es "nulleable"
-    var pokemonSalvaje by mutableStateOf<Pokemon?>(null)
-        private set
+        var mensajeSubeNivel by mutableStateOf("")
 
-    var capturados by mutableStateOf(listOf<Pokemon>())
-        private set
+    fun entrenar(numPkdxRecv: Int){
 
-    // Aqui es donde se llamaria a una API, o cualquier otro medio para obtener información.
-    fun buscarEnLaHierba(){
-        pokemonSalvaje = pokemonDisponibles.random()
-    }
+        var pokemon = pokemonDisponibles.find { it.numPkdx == numPkdxRecv }
 
-    fun capturar(){
+        pokemon?.let {
 
-        // .let hace la ejecución de lo que esta dentro de las llaves, solo si no es nulo (es una validación
-        // nulidad).
-        // ? Es para evitar que si fuese nulo, la variable pueda almacenarlo.
-//        pokemonSalvaje?.let {
-//            val success = (0..100).random()
-//
-//            if(success > 50){
-//                capturados = capturados + it
-//                seFue = false
-//            } else{
-//                seFue = true
-//            }
-//
-//            pokemonSalvaje = null
-//
-//        }
+            var porcentajeSubirNivel = 100 - it.level + 1
+
+            var subeNivel = (0..100)
+                .random()
+
+            if(subeNivel >= porcentajeSubirNivel){
+
+                mensajeSubeNivel = "El entrenamiento falló"
+            } else{
+
+                it.level += 1
+                mensajeSubeNivel = "Subió de nivel, ${it.level}"
+
+            }
+        }
+
 
     }
 
