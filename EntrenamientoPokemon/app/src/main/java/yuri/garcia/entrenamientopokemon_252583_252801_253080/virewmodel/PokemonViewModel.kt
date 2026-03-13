@@ -1,15 +1,18 @@
-class PokemonViewModel : ViewModel(){
+package yuri.garcia.entrenamientopokemon_252583_252801_253080.virewmodel
 
-    var probabilidadSubirNivel by mutableStateOf<listOf<Int>(100)
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import yuri.garcia.entrenamientopokemon_252583_252801_253080.data.models.Pokemon
+
+    class PokemonViewModel : ViewModel(){
+
+    //var probabilidadSubirNivel by mutableStateOf<listOf<Int>(100)
 
     private val pokemonDisponibles = listOf(
-        Pokemon("Pikachu", "Electric"),
-        Pokemon("Charmander", "Fire"),
-        Pokemon("Squirtle", "Water"),
-        Pokemon("Bulbasaur", "Grass"),
-        Pokemon("Jigglypuff", "Fairy"),
-        Pokemon("Gengar", "Ghost")
-
+        Pokemon("Zeraora", 50, 807, "Eléctrico", 1.5, 44.5,
+            "Las almohadillas de sus patas desprenden descargas eléctricas. Cuando corre, hace que los rayos caigan y que los truenos resuenen.", ),
     )
 
     // ? Significa que es "nulleable"
@@ -29,19 +32,19 @@ class PokemonViewModel : ViewModel(){
         // .let hace la ejecución de lo que esta dentro de las llaves, solo si no es nulo (es una validación
         // nulidad).
         // ? Es para evitar que si fuese nulo, la variable pueda almacenarlo.
-        pokemonSalvaje?.let {
-            val success = (0..100).random()
-
-            if(success > 50){
-                capturados = capturados + it
-                seFue = false
-            } else{
-                seFue = true
-            }
-
-            pokemonSalvaje = null
-
-        }
+//        pokemonSalvaje?.let {
+//            val success = (0..100).random()
+//
+//            if(success > 50){
+//                capturados = capturados + it
+//                seFue = false
+//            } else{
+//                seFue = true
+//            }
+//
+//            pokemonSalvaje = null
+//
+//        }
 
     }
 
