@@ -1,8 +1,6 @@
-
 class PokemonViewModel : ViewModel(){
 
     var probabilidadSubirNivel by mutableStateOf<listOf<Int>(100)
-
 
     private val pokemonDisponibles = listOf(
         Pokemon("Pikachu", "Electric"),
