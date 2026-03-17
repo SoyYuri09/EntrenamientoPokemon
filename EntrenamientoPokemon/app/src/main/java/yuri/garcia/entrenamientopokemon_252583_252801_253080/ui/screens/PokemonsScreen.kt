@@ -13,15 +13,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import yuri.garcia.entrenamientopokemon_252583_252801_253080.viewmodel.PokemonViewModel
+
+/**
+ * Manuel Romo López - 253080
+ * Daniel Miramontes Iribe - 252801
+ * Yuri Germán García López - 252583
+ */
 
 @Composable
 fun PokemonsScreen(
-    onDetailSucces: () -> Unit
+    viewModel: PokemonViewModel,
+    onPokemon: (numPkdx: Int) -> Unit
 ){
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
+            .padding(bottom = 35.dp)
     ) {
         Spacer(modifier = Modifier.height(30.dp))
         Text(text = "Listado de Pokémons",
@@ -31,23 +41,25 @@ fun PokemonsScreen(
         )
         Spacer(modifier = Modifier.height(20.dp))
 
-//        LazyColumn() { //Lista dinámica de pokémons
-//            items(items = samplePokemon){
-//                    pokemon ->
-//                PokemonCard(
-//                    pokemon = pokemon,
-//                    onClick = {
-//                        selectedPokemon = pokemon
-//                        onDetailSucces()
-//                    }
-//                )
-//            }
-//        }
+        // Lista dinámica de pokémons
+        LazyColumn() {
+            items(items = viewModel.capturados){
+
+                PokemonCard(
+                    pokemon = it,
+                    onCardClick = {
+                        viewModel.limpiarMensaje()
+                        onPokemon(it.numPkdx)
+                    }
+                )
+            }
+
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PokemonsScreenPreview(){
-    PokemonsScreen({})
+    PokemonsScreen(viewModel(), {})
 }

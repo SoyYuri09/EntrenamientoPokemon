@@ -24,6 +24,12 @@ import androidx.compose.ui.unit.dp
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.R
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.data.models.Pokemon
 
+/**
+ * Manuel Romo López - 253080
+ * Daniel Miramontes Iribe - 252801
+ * Yuri Germán García López - 252583
+ */
+
 @Composable
 fun PokemonImageCard(pokemon: Pokemon) {
     Column(

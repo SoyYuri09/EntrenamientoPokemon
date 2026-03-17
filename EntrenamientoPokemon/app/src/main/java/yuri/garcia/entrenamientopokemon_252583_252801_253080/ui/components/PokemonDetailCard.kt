@@ -9,16 +9,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.R
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.data.models.Pokemon
+
+/**
+ * Manuel Romo López - 253080
+ * Daniel Miramontes Iribe - 252801
+ * Yuri Germán García López - 252583
+ */
 
 @Composable
 fun PokemonDetailCard(pokemon: Pokemon) {
@@ -33,8 +40,8 @@ fun PokemonDetailCard(pokemon: Pokemon) {
                 .padding(bottom = 8.dp),
             elevation = CardDefaults.cardElevation(6.dp),
             colors = CardDefaults.cardColors(
-                containerColor = colorResource(R.color.white)
-            )
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -42,7 +49,6 @@ fun PokemonDetailCard(pokemon: Pokemon) {
             ) {
                 Text(
                     text = pokemon.description,
-                    color = colorResource(R.color.black),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(12.dp)
                 )
@@ -54,7 +60,7 @@ fun PokemonDetailCard(pokemon: Pokemon) {
                 .height(170.dp),
             elevation = CardDefaults.cardElevation(8.dp),
             colors = CardDefaults.cardColors(
-                containerColor = colorResource(R.color.blue)
+                containerColor = MaterialTheme.colorScheme.surface
             )
         ) {
             Box(
@@ -65,17 +71,15 @@ fun PokemonDetailCard(pokemon: Pokemon) {
                     Row(horizontalArrangement = Arrangement.Center) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
-                                text = "Altura:",
-                                color = colorResource(R.color.white)
+                                text = stringResource(R.string.height_label),
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(text = "${pokemon.height} m")
+                            Text(text = stringResource(R.string.meter_abbreviation, pokemon.height))
                         }
                         Spacer(modifier = Modifier.width(26.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
-                                text = "Peso:",
-                                color = colorResource(R.color.white)
+                                text = stringResource(R.string.weight_label),
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(text = "${pokemon.weight} kg")
@@ -84,8 +88,7 @@ fun PokemonDetailCard(pokemon: Pokemon) {
                     Spacer(modifier = Modifier.height(10.dp))
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
-                            text = "Tipo:",
-                            color = colorResource(R.color.white)
+                            text = stringResource(R.string.type_label),
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(text = pokemon.type)

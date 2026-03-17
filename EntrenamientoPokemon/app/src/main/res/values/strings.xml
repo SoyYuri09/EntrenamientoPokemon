@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">EntrenamientoPokemon_252583_252801_253080</string>
+    <string name="invalid_user_password_message">Usuario y/o contraseña inválidos</string>
+    <string name="username_label">Nombre de usuario</string>
+    <string name="password_label">Contraseña</string>
+    <string name="enter_label">Entrar</string>
+    <string name="train_label">Entrenar</string>
+    <string name="log_in_label">Inicio de sesión</string>
+    <string name="weight_label">Peso:</string>
+    <string name="type_label">Tipo:</string>
+    <string name="height_label">Altura:</string>
+    <string name="meter_abbreviation">%1$s m</string>
+    <string name="type_label_preview">"Tipo: "</string>
+    <string name="height_label_preview">"Altura: "</string>
+    <string name="weight_label_preview">"Peso: "</string>
+    <string name="level_label_preview">"Nivel: "</string>
+    <string name="level_label">Nivel %1$d</string>
 </resources>
