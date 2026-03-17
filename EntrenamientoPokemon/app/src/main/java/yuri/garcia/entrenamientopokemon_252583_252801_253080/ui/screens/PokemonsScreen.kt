@@ -26,8 +26,8 @@ import yuri.garcia.entrenamientopokemon_252583_252801_253080.viewmodel.PokemonVi
 
 @Composable
 fun PokemonsScreen(
-    viewModel: PokemonViewModel,
-    onPokemon: (numPkdx: Int) -> Unit
+    onPokemon: (numPkdx: Int) -> Unit,
+    viewModel: PokemonViewModel = viewModel()
 ){
     Column(
         modifier = Modifier
@@ -63,5 +63,5 @@ fun PokemonsScreen(
 @Preview(showBackground = true)
 @Composable
 fun PokemonsScreenPreview(){
-    PokemonsScreen(viewModel(), {})
+    PokemonsScreen({}, viewModel())
 }

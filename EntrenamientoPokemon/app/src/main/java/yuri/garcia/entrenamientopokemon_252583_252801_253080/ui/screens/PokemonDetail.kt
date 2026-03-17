@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.R
-import yuri.garcia.entrenamientopokemon_252583_252801_253080.data.models.Pokemon
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.ui.components.PokemonImageCard
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.viewmodel.PokemonViewModel
 
@@ -32,7 +31,7 @@ import yuri.garcia.entrenamientopokemon_252583_252801_253080.viewmodel.PokemonVi
 
 @Composable
 fun PokemonDetail(
-    pokemon: Pokemon,
+    numPkdx: Int,
     viewModel: PokemonViewModel
 ){
     Column(
@@ -45,27 +44,32 @@ fun PokemonDetail(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        PokemonImageCard(pokemon)
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.level_label, pokemon.level),
-            style = MaterialTheme.typography.headlineSmall
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Button (
-            onClick = {
-                viewModel.entrenar(pokemon.numPkdx)
+        val selectedPokemon = viewModel.capturados.find {it.numPkdx == numPkdx}
+
+        if(selectedPokemon != null){
+            PokemonImageCard(selectedPokemon)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = stringResource(R.string.level_label, selectedPokemon.level),
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button (
+                onClick = {
+                    viewModel.entrenar(selectedPokemon.numPkdx)
+                }
+            ){
+                Text(text = stringResource(R.string.train_label))
             }
-        ){
-            Text(text = stringResource(R.string.train_label))
-        }
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        if(viewModel.mensajeSubeNivel != null){
-            Text(text = viewModel.mensajeSubeNivel!!)
+            if(viewModel.mensajeSubeNivel != null){
+                Text(text = viewModel.mensajeSubeNivel!!)
+            }
+
+            PokemonDetailCard(selectedPokemon)
         }
 
-        PokemonDetailCard(pokemon)
 
     }
 
@@ -75,12 +79,5 @@ fun PokemonDetail(
 @Preview(showBackground = true)
 @Composable
 fun PokemonDetailPreview(){
-    PokemonDetail(
-        pokemon = Pokemon(
-            "Riolu", 15, 447, "Lucha", 0.7, 20.2,
-            "Se comunica con los suyos emitiendo ondas. Puede pasarse toda una noche corriendo.",
-            R.drawable.riolu
-        ),
-        viewModel = viewModel()
-    )
+    PokemonDetail(15, viewModel())
 }

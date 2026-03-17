@@ -45,10 +45,11 @@ fun AppNavigator(){
             arguments = listOf(navArgument("pokemonNumPkdx") {type = NavType.IntType})
         ){
             val pokemonNumPkdx = it.arguments?.getInt("pokemonNumPkdx")
-            val selectedPokemon = viewModel.capturados.find {it.numPkdx == pokemonNumPkdx}
 
-            if (selectedPokemon != null) {
-                PokemonDetail(pokemon = selectedPokemon, viewModel = viewModel)
+            if (pokemonNumPkdx != null) {
+                PokemonDetail(
+                    numPkdx = pokemonNumPkdx,
+                    viewModel = viewModel)
             }
         }
 
