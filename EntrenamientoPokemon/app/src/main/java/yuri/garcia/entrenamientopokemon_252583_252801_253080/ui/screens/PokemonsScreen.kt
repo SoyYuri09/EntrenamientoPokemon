@@ -10,10 +10,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import yuri.garcia.entrenamientopokemon_252583_252801_253080.R
 import yuri.garcia.entrenamientopokemon_252583_252801_253080.viewmodel.PokemonViewModel
 
 /**
@@ -34,7 +36,7 @@ fun PokemonsScreen(
             .padding(bottom = 35.dp)
     ) {
         Spacer(modifier = Modifier.height(30.dp))
-        Text(text = "Listado de Pokémons",
+        Text(text = stringResource(R.string.list_label),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()

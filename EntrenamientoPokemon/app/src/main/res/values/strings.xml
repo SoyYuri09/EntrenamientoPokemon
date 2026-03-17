@@ -15,4 +15,5 @@
     <string name="weight_label_preview">"Peso: "</string>
     <string name="level_label_preview">"Nivel: "</string>
     <string name="level_label">Nivel %1$d</string>
+    <string name="list_label">Listado de Pokémons</string>
 </resources>
